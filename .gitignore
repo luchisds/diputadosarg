@@ -57,3 +57,4 @@ settings.py
 ###########
 fixtures/
 migrations/
+staticfiles/
