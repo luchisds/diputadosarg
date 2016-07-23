@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Diputados</title>
+	<style>
+		p {
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+	<h2>Main</h2>
+	<p>Periodo: {{datos.periodo}}</p>
+	<p>Cantidad de sesiones: {{datos.cantidad_sesiones}}</p>
+	<p>Descripcion: {{datos.slug_sesiones}}</p>
+	{% for sesion in datos.sesiones %}
+		<h3>{{sesion.sesion}}</h3>
+		<p>Fecha: {{sesion.fecha}}</p>
+		<p>Presente: {{sesion.presente}}</p>
+		<p>Ausente: {{sesion.ausente}}</p>
+		<p>Licencia: {{sesion.licencia}}</p>
+		<p>M.O.: {{sesion.mo}}</p>
+	{% endfor %}
+
+	<h2>Diputados</h2>
+	{% for diputado in diputados %}
+		<p>
+			<span>{{diputado.nombre}}</span> --- <span>{{diputado.bloque}}</span>
+		</p>
+	{% endfor %}
+
+	<h2>Proyecto</h2>
+	<!-- <p>{{texto}}</p> 
+	<p>{{fundamentos}}</p>
+	 <p>{{firmantes}}</p>
+	<p>{{tramite.titulo}}</p>
+	{% for comision in tramite.comisiones %}
+		<p>{{comision}}</p>
+	{% endfor %}-->
+</body>
+</html>
