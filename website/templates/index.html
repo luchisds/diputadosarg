@@ -2,41 +2,14 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Diputados</title>
-	<style>
-		p {
-			margin: 0;
-		}
-	</style>
+	<title>DiputadosArg</title>
 </head>
 <body>
-	<h2>Main</h2>
-	<p>Periodo: {{datos.periodo}}</p>
-	<p>Cantidad de sesiones: {{datos.cantidad_sesiones}}</p>
-	<p>Descripcion: {{datos.slug_sesiones}}</p>
-	{% for sesion in datos.sesiones %}
-		<h3>{{sesion.sesion}}</h3>
-		<p>Fecha: {{sesion.fecha}}</p>
-		<p>Presente: {{sesion.presente}}</p>
-		<p>Ausente: {{sesion.ausente}}</p>
-		<p>Licencia: {{sesion.licencia}}</p>
-		<p>M.O.: {{sesion.mo}}</p>
-	{% endfor %}
-
-	<h2>Diputados</h2>
-	{% for diputado in diputados %}
-		<p>
-			<span>{{diputado.nombre}}</span> --- <span>{{diputado.bloque}}</span>
-		</p>
-	{% endfor %}
-
-	<h2>Proyecto</h2>
-	<!-- <p>{{texto}}</p> 
-	<p>{{fundamentos}}</p>
-	 <p>{{firmantes}}</p>
-	<p>{{tramite.titulo}}</p>
-	{% for comision in tramite.comisiones %}
-		<p>{{comision}}</p>
-	{% endfor %}-->
+	<h1>DiputadosArg</h1>
+	<p>Este es un proyecto open-source que busca crear y mantener actualizada un API REST con la información dispionible en el sitio <a href="http://www.diputados.gov.ar">www.diputados.gov.ar</a> en cuanto a la planta actual de diputados nacionales, sus proyectos y presentismo.</p>
+	<p>La idea es agregar a futuro las votaciones por diputado.</p>
+	<p>Mucha de la informacion relevante en el sitio <a href="http://www.diputados.gov.ar">www.diputados.gov.ar</a> se encuentra en formato PDF que dificulta el acceso a los datos de forma programática. Primero es necesario extraer los datos, para estos casos utilizo la herramienta <em>TABULA</em> (<a href="https://github.com/tabulapdf/tabula">https://github.com/tabulapdf/tabula</a>)</p>
+	<p>Los datos disponibles en las paginas HTML se obtienen mediante tecnicas de scrapping de datos.</p>
+	<p>Utilizo el lenguaje PYTHON y el framework Django.</p>
 </body>
 </html>

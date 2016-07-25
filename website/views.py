@@ -307,10 +307,4 @@ def AsistenciasUpdate(request):
 ##########################
 
 def Index(request):
-	response = requests.get('http://127.0.0.1:8000/main/')
-	datos = response.json()
-
-	response = requests.get('http://127.0.0.1:8000/diputado')
-	diputado = response.json()
-
-	return render(request, 'index.html', {'datos':datos, 'diputados':diputado})
+	return render(request, 'index.html')
