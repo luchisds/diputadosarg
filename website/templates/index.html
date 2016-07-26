@@ -2,14 +2,45 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>DiputadosArg</title>
+
+	{% load staticfiles %}
+	<link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" />
 </head>
 <body>
-	<h1>DiputadosArg</h1>
-	<p>Este es un proyecto open-source que busca crear y mantener actualizada un API REST con la información dispionible en el sitio <a href="http://www.diputados.gov.ar">www.diputados.gov.ar</a> en cuanto a la planta actual de diputados nacionales, sus proyectos y presentismo.</p>
-	<p>La idea es agregar a futuro las votaciones por diputado.</p>
-	<p>Mucha de la informacion relevante en el sitio <a href="http://www.diputados.gov.ar">www.diputados.gov.ar</a> se encuentra en formato PDF que dificulta el acceso a los datos de forma programática. Primero es necesario extraer los datos, para estos casos utilizo la herramienta <em>TABULA</em> (<a href="https://github.com/tabulapdf/tabula">https://github.com/tabulapdf/tabula</a>)</p>
-	<p>Los datos disponibles en las paginas HTML se obtienen mediante tecnicas de scrapping de datos.</p>
-	<p>Utilizo el lenguaje PYTHON y el framework Django.</p>
+	<a href="https://github.com/luchisds/diputadosarg"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+	<div class="container">
+		<header class="page-header">
+			<h1>DiputadosArg <span class="label label-success">Beta</span></h1>
+			<p class="lead">Este es un proyecto open-source que pone a disposicion de cualquier desarrollador un API REST con información del sitio <a href="http://www.diputados.gov.ar">www.diputados.gov.ar</a> para su libre uso.</p>
+		</header>
+		<p>Los datos disponibles en HTML se obtienen realizando scrapping del sitio <a href="http://www.diputados.gov.ar">www.diputados.gov.ar</a>.</p>
+		<p>Los datos disponibles en formato PDF se extraen a archivos <i>.csv</i> con ayuda de la herramienta <a href="http://tabula.technology/"><em>TABULA</em></a> (<a href="https://github.com/tabulapdf/tabula">https://github.com/tabulapdf/tabula</a>)</p>
+
+		<div class="span3 bs-docs-sidebar">
+			<ul class="nav nav-list bs-docs-sidenav">
+				<li><a href=""><i class="icon-chevron-right"></i> General</a></li>
+				<li><a href="">Lista de Diputados</a></li>
+				<li><a href="">Diputado</a></li>
+				<li><a href="">Proyectos por Diputado</a></li>
+				<li><a href="">Proyecto</a></li>
+				<li><a href="">Comisiones por Diputado</a></li>
+				<li><a href="">Asistencias</a></li>
+				<li><a href="">Run</a></li>
+			</ul>
+		</div>
+		
+		<div class="span9">
+			<section id="general">
+				<h2 class="page-header">General</h2>
+				<pre class="prettyprint">{"slug_sesiones": "Se realizaron 7 Sesiones que comprenden 7 reuniones (incluye 1 Sesi\u00f3n Informativa) + 1 Asamblea Legislativa. TOTAL: 8 REUNIONES", "sesiones": [{"licencia": "3", "sesion": "ASAMBLEA LEGISLATIVA", "ausente": "9", "fecha": "01/03/2016", "presente": "219", "mo": ""}, {"licencia": "3", "sesion": "1\u00ba Sesi\u00f3n Especial - 1\u00ba Reuni\u00f3n", "ausente": "5", "fecha": "01/03/2016", "presente": "248", "mo": ""}, {"licencia": "", "sesion": "2\u00ba Sesi\u00f3n Especial - 2\u00ba Reuni\u00f3n", "ausente": "", "fecha": "15/03/2016", "presente": "257", "mo": ""}, {"licencia": "5", "sesion": "3\u00ba Sesi\u00f3n Especial - 3\u00ba Reuni\u00f3n", "ausente": "8", "fecha": "06/04/2016", "presente": "244", "mo": ""}, {"licencia": "20", "sesion": "4\u00ba Sesi\u00f3n Informativa - 4\u00ba Reuni\u00f3n", "ausente": "14", "fecha": "27/04/2016", "presente": "221", "mo": "1"}, {"licencia": "4", "sesion": "5\u00ba Sesi\u00f3n Tablas - 6\u00ba Reuni\u00f3n", "ausente": "", "fecha": "18/05/2016", "presente": "251", "mo": "2"}, {"licencia": "9", "sesion": "6\u00ba Sesi\u00f3n Tablas - 7\u00ba Reuni\u00f3n", "ausente": "18", "fecha": "01/06/2016", "presente": "227", "mo": "3"}, {"licencia": "3", "sesion": "7\u00ba Sesi\u00f3n Especial - 8\u00ba Reuni\u00f3n", "ausente": "7", "fecha": "15/06/2016", "presente": "246", "mo": "1"}], "cantidad_sesiones": 8, "periodo": 134}</pre>
+			</section>
+		</div>
+	</div>
+
+	<link href="{% static "bootstrap/js/bootstrap.min.js" %}" rel="stylesheet" />
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 </body>
 </html>
