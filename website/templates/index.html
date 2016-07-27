@@ -7,21 +7,43 @@
 	<title>DiputadosArg</title>
 
 	{% load staticfiles %}
-	<link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" />
+	<link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet" />
+	<link href="{% static "bootstrap/css/bootstrap-theme.css" %}" rel="stylesheet" />
+	<style type="text/css" media="screen">
+		header > div h1,
+		header > div span {
+			display: inline-block;
+		}
+
+		header > div span {
+			margin-left: 10px;
+		}
+
+		h1 {
+			font-size: 4em;
+			font-weight: bold;
+		}
+
+		pre {
+			white-space: pre-wrap;
+		}
+	</style>
 </head>
 <body>
 	<a href="https://github.com/luchisds/diputadosarg"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
 	<div class="container">
 		<header class="page-header">
-			<h1>DiputadosArg <span class="label label-success">Beta</span></h1>
+			<div>
+				<h1>DiputadosArg</h1><span class="label label-success">Beta</span>
+			</div>
 			<p class="lead">Este es un proyecto open-source que pone a disposicion de cualquier desarrollador un API REST con información del sitio <a href="http://www.diputados.gov.ar">www.diputados.gov.ar</a> para su libre uso.</p>
 		</header>
 		<p>Los datos disponibles en HTML se obtienen realizando scrapping del sitio <a href="http://www.diputados.gov.ar">www.diputados.gov.ar</a>.</p>
-		<p>Los datos disponibles en formato PDF se extraen a archivos <i>.csv</i> con ayuda de la herramienta <a href="http://tabula.technology/"><em>TABULA</em></a> (<a href="https://github.com/tabulapdf/tabula">https://github.com/tabulapdf/tabula</a>)</p>
+		<p>Los datos disponibles en formato PDF se extraen a archivos <i>.csv</i> con ayuda de la herramienta de código libre <a href="http://tabula.technology/"><em>TABULA</em></a>.</p>
 
-		<div class="span3 bs-docs-sidebar">
-			<ul class="nav nav-list bs-docs-sidenav">
-				<li><a href=""><i class="icon-chevron-right"></i> General</a></li>
+		<div>
+			<ul>
+				<li><a href="">General</a></li>
 				<li><a href="">Lista de Diputados</a></li>
 				<li><a href="">Diputado</a></li>
 				<li><a href="">Proyectos por Diputado</a></li>
@@ -32,15 +54,38 @@
 			</ul>
 		</div>
 		
-		<div class="span9">
+		<div>
 			<section id="general">
 				<h2 class="page-header">General</h2>
-				<pre class="prettyprint">{"slug_sesiones": "Se realizaron 7 Sesiones que comprenden 7 reuniones (incluye 1 Sesi\u00f3n Informativa) + 1 Asamblea Legislativa. TOTAL: 8 REUNIONES", "sesiones": [{"licencia": "3", "sesion": "ASAMBLEA LEGISLATIVA", "ausente": "9", "fecha": "01/03/2016", "presente": "219", "mo": ""}, {"licencia": "3", "sesion": "1\u00ba Sesi\u00f3n Especial - 1\u00ba Reuni\u00f3n", "ausente": "5", "fecha": "01/03/2016", "presente": "248", "mo": ""}, {"licencia": "", "sesion": "2\u00ba Sesi\u00f3n Especial - 2\u00ba Reuni\u00f3n", "ausente": "", "fecha": "15/03/2016", "presente": "257", "mo": ""}, {"licencia": "5", "sesion": "3\u00ba Sesi\u00f3n Especial - 3\u00ba Reuni\u00f3n", "ausente": "8", "fecha": "06/04/2016", "presente": "244", "mo": ""}, {"licencia": "20", "sesion": "4\u00ba Sesi\u00f3n Informativa - 4\u00ba Reuni\u00f3n", "ausente": "14", "fecha": "27/04/2016", "presente": "221", "mo": "1"}, {"licencia": "4", "sesion": "5\u00ba Sesi\u00f3n Tablas - 6\u00ba Reuni\u00f3n", "ausente": "", "fecha": "18/05/2016", "presente": "251", "mo": "2"}, {"licencia": "9", "sesion": "6\u00ba Sesi\u00f3n Tablas - 7\u00ba Reuni\u00f3n", "ausente": "18", "fecha": "01/06/2016", "presente": "227", "mo": "3"}, {"licencia": "3", "sesion": "7\u00ba Sesi\u00f3n Especial - 8\u00ba Reuni\u00f3n", "ausente": "7", "fecha": "15/06/2016", "presente": "246", "mo": "1"}], "cantidad_sesiones": 8, "periodo": 134}</pre>
+				<pre>{"slug_sesiones": "Se realizaron 7 Sesiones que comprenden 7 reuniones (incluye 1 Sesi\u00f3n Informativa) + 1 Asamblea Legislativa. TOTAL: 8 REUNIONES", "sesiones": [{"licencia": "3", "sesion": "ASAMBLEA LEGISLATIVA", "ausente": "9", "fecha": "01/03/2016", "presente": "219", "mo": ""}, {"licencia": "3", "sesion": "1\u00ba Sesi\u00f3n Especial - 1\u00ba Reuni\u00f3n", "ausente": "5", "fecha": "01/03/2016", "presente": "248", "mo": ""}, {"licencia": "", "sesion": "2\u00ba Sesi\u00f3n Especial - 2\u00ba Reuni\u00f3n", "ausente": "", "fecha": "15/03/2016", "presente": "257", "mo": ""}, {"licencia": "5", "sesion": "3\u00ba Sesi\u00f3n Especial - 3\u00ba Reuni\u00f3n", "ausente": "8", "fecha": "06/04/2016", "presente": "244", "mo": ""}, {"licencia": "20", "sesion": "4\u00ba Sesi\u00f3n Informativa - 4\u00ba Reuni\u00f3n", "ausente": "14", "fecha": "27/04/2016", "presente": "221", "mo": "1"}, {"licencia": "4", "sesion": "5\u00ba Sesi\u00f3n Tablas - 6\u00ba Reuni\u00f3n", "ausente": "", "fecha": "18/05/2016", "presente": "251", "mo": "2"}, {"licencia": "9", "sesion": "6\u00ba Sesi\u00f3n Tablas - 7\u00ba Reuni\u00f3n", "ausente": "18", "fecha": "01/06/2016", "presente": "227", "mo": "3"}, {"licencia": "3", "sesion": "7\u00ba Sesi\u00f3n Especial - 8\u00ba Reuni\u00f3n", "ausente": "7", "fecha": "15/06/2016", "presente": "246", "mo": "1"}], "cantidad_sesiones": 8, "periodo": 134}</pre>
+			</section>
+			<section id="lista-diputados">
+				<h2 class="page-header">Lista de Diputados</h2>
+				<pre>[{"nombre": "ABDALA DE MATARAZZO, NORMA AMANDA", "ini": "10/12/2013", "bloque": "FRENTE CIVICO POR SANTIAGO", "id": "nabdaladem", "distrito": "Santiago Del Estero", "img": "http://www4.hcdn.gob.ar/fotos/cuadradas/nabdaladem.jpg", "fin": "09/12/2017", "url": "/diputados/nabdaladem/"}, {"nombre": "ABRAHAM, ALEJANDRO", "ini": "10/12/2013", "bloque": "FRENTE PARA LA VICTORIA - PJ", "id": "aabraham", "distrito": "Mendoza", "img": "http://www4.hcdn.gob.ar/fotos/cuadradas/aabraham.jpg", "fin": "09/12/2017", "url": "/diputados/aabraham/"}, {"nombre": "ACERENZA, SAMANTA MARIA CELESTE", "ini": "10/12/2015", "bloque": "UNION PRO", "id": "sacerenza", "distrito": "Buenos Aires", "img": "http://www4.hcdn.gob.ar/fotos/cuadradas/sacerenza.jpg", "fin": "09/12/2019", "url": "/diputados/sacerenza/"}, {"nombre": "ALBORNOZ, GABRIELA ROMINA", "ini": "10/12/2013", "bloque": "UNION CIVICA RADICAL", "id": "galbornoz", "distrito": "Jujuy", "img": "http://www4.hcdn.gob.ar/fotos/cuadradas/galbornoz.jpg", "fin": "09/12/2017", "url": "/diputados/galbornoz/"}, {"nombre": "ALEGRE, GILBERTO OSCAR", "ini": "10/12/2013", "bloque": "FEDERAL UNIDOS POR UNA NUEVA ARGENTINA", "id": "galegre", "distrito": "Buenos Aires", "img": "http://www4.hcdn.gob.ar/fotos/cuadradas/galegre.jpg", "fin": "09/12/2017", "url": "/diputados/galegre/"}, {"nombre": "ALFONSIN, RICARDO LUIS", "ini": "10/12/2013", "bloque": "UNION CIVICA RADICAL", "id": "ralfonsin", "distrito": "Buenos Aires", "img": "http://www4.hcdn.gob.ar/fotos/cuadradas/ralfonsin.jpg", "fin": "09/12/2017", "url": "/diputados/ralfonsin/"}, {"nombre": "ALONSO, HORACIO FERNANDO", "ini": "10/12/2013", "bloque": "FEDERAL UNIDOS POR UNA NUEVA ARGENTINA", "id": "halonso", "distrito": "Buenos Aires", "img": "http://www4.hcdn.gob.ar/fotos/cuadradas/halonso.jpg", "fin": "09/12/2017", "url": "/diputados/halonso/"}, {"nombre": "ALVAREZ RODRIGUEZ, MARIA CRISTINA", "ini": "10/12/2015", "bloque": "FRENTE PARA LA VICTORIA - PJ", "id": "malvarezr", "distrito": "Buenos Aires", "img": "http://www4.hcdn.gob.ar/fotos/cuadradas/malvarezr.jpg", "fin": "09/12/2019", "url": "/diputados/malvarezr/"}, {"nombre": "AMADEO, EDUARDO PABLO", "ini": "10/12/2015", "bloque": "UNION PRO", "id": "eamadeo", "distrito": "Buenos Aires", "img": "http://www4.hcdn.gob.ar/fotos/cuadradas/eamadeo.jpg", "fin": "09/12/2019", "url": "/diputados/eamadeo/"}, {"nombre": "ARENAS, BERTA HORTENSIA", "ini": "10/12/2013", "bloque": "COMPROMISO FEDERAL", "id": "barenas", "distrito": "San Luis", "img": "http://www4.hcdn.gob.ar/fotos/cuadradas/barenas.jpg", "fin": "09/12/2017", "url": "/diputados/barenas/"}, ...]</pre>
+			</section>
+			<section id="diputado">
+				<h2 class="page-header">Diputado</h2>
+				<pre>{"nombre": "Norma Amanda\u00a0Abdala De Matarazzo", "email": "nabdaladem@diputados.gob.ar", "bloque": "FRENTE CIVICO POR SANTIAGO", "id": "nabdaladem", "distrito": "Santiago Del Estero", "img": "http://www4.hcdn.gob.ar/fotos/cuadradas/nabdaladem.jpg", "tel": "4127-7100", "distrito_escudo": "http://www4.hcdn.gob.ar/fotos/distrito/SANTIAGODELESTERO.png", "cargo": "Diputada de la Naci\u00f3n"}</pre>
+			</section>
+			<section id="proyectos-diputado">
+				<h2 class="page-header">Proyectos por Diputado</h2>
+				<pre>[{"id": "nabdaladem", "fecha": "18/07/2016", "tipo": "RESOLUCION", "sumario": "DECLARAR DE INTERES DE LA H. CAMARA EL 126 ANIVERSARIO DE LA FUNDACION DE LA CIUDAD DE FERNANDEZ, CABECERA DEL DEPARTAMENTO DE ROBLES, PROVINCIA DE SANTIAGO DEL ESTERO, A CELEBRARSE EL 26 DE JULIO DE 2016.", "expediente": "4497-D-2016", "id_proyecto": "188207", "expediente_url": "/proyectos/proyecto.jsp?id=188207"}, {"id": "nabdaladem", "fecha": "29/06/2016", "tipo": "RESOLUCION", "sumario": "SOLICITAR AL PODER EJECUTIVO DISPONGA LA REMOCION DE SU CARGO DE LA DOCTORA SUSANA MABEL MALCORRA, MINISTRA DE RELACIONES EXTERIORES Y CULTO Y CONVOCAR EL SE\u00d1OR JEFE DE GABINETE DE MINISTROS, MARCOS PE\u00d1A A RESPONDER ACERCA DE SU NOMBRAMIENTO.", "expediente": "4056-D-2016", "id_proyecto": "187462", "expediente_url": "/proyectos/proyecto.jsp?id=187462"}, {"id": "nabdaladem", "fecha": "29/06/2016", "tipo": "RESOLUCION", "sumario": "DECLARAR DE INTERES DE LA H. CAMARA LA REALIZACION DE LA \"EXPO BANDERA 2016\" CONJUNTAMENTE CON LA 17 FIESTA PROVINCIAL DEL TERNERO SANTIAGUE\u00d1O Y LA 12 FIESTA PROVINCIAL DE LA SOJA, A REALIZARSE DEL 1 AL 3 DE JULIO DE 2016, EN LA CIUDAD DE BANDERA, PROVINCIA DE SANTIAGO DEL ESTERO.", "expediente": "4024-D-2016", "id_proyecto": "187459", "expediente_url": "/proyectos/proyecto.jsp?id=187459"}, {"id": "nabdaladem", "fecha": "15/06/2016", "tipo": "RESOLUCION", "sumario": "DECLARAR DE INTERES DE LA H. CAMARA EL \"PROTAGONISMO DEL JUSTICIALISMO EN EL BICENTENARIO\", QUE SE REALIZA DEL 11 DE JUNIO AL 1 DE JULIO DE 2016 EN LA PROVINCIA DE SANTIAGO DEL ESTERO.", "expediente": "3696-D-2016", "id_proyecto": "187167", "expediente_url": "/proyectos/proyecto.jsp?id=187167"}, {"id": "nabdaladem", "fecha": "08/06/2016", "tipo": "RESOLUCION", "sumario": "DECLARAR DE INTERES DE LA H. CAMARA EL \"IV ENCUENTRO LATINOAMERICANO DE PAYADORES\", A REALIZARSE LOS DIAS 16 Y 17 DE AGOSTO DE 2016, EN LA PROVINCIA DE SANTIAGO DEL ESTERO.", "expediente": "3421-D-2016", "id_proyecto": "186872", "expediente_url": "/proyectos/proyecto.jsp?id=186872"}, {"id": "nabdaladem", "fecha": "24/05/2016", "tipo": "RESOLUCION", "sumario": "DECLARAR DE INTERES DE LA H. CAMARA EL \"QUINTO CONGRESO ARGENTINO DE INGENIERIA MECANICA - V CAIM 2016 -\", A REALIZARSE DEL 5 AL 7 DE OCTUBRE DE 2016, EN LA CIUDAD CAPITAL DE LA PROVINCIA DE SANTIAGO DEL ESTERO.", "expediente": "2968-D-2016", "id_proyecto": "186425", "expediente_url": "/proyectos/proyecto.jsp?id=186425"}, {"id": "nabdaladem", "fecha": "24/05/2016", "tipo": "RESOLUCION", "sumario": "RENDIR HOMENAJE AL CANTANTE Y COMPOSITOR ARGENTINO \"CACHO CASTA\u00d1A\" POR SU TRAYECTORIA.", "expediente": "2967-D-2016", "id_proyecto": "186419", "expediente_url": "/proyectos/proyecto.jsp?id=186419"}, {"id": "nabdaladem", "fecha": "19/05/2016", "tipo": "LEY", "sumario": "SUBSIDIO PARA LA CONTENCION FAMILIAR PARA HIJAS E HIJOS DE MADRES O PADRES FALLECIDOS EN HECHOS DE VIOLENCIA DOMESTICA. INSTITUCION.", "expediente": "2855-D-2016", "id_proyecto": "186165", "expediente_url": "/proyectos/proyecto.jsp?id=186165"}, {"id": "nabdaladem", "fecha": "19/05/2016", "tipo": "RESOLUCION", "sumario": "DECLARAR DE INTERES DE LA H. CAMARA EL LIBRO \"VOCES FEMENINAS DEL NOA. ANTOLOGIA POETICA\", COMPILADO POR LA SOCIEDAD ARGENTINA DE ESCRITORES - SADE -.", "expediente": "2854-D-2016", "id_proyecto": "186153", "expediente_url": "/proyectos/proyecto.jsp?id=186153"}, {"id": "nabdaladem", "fecha": "19/05/2016", "tipo": "RESOLUCION", "sumario": "DECLARAR DE INTERES DE LA H. CAMARA EL \"XVIII SEMINARIO IBEROAMERICANO SOBRE DROGAS Y COOPERACION DE LA RIOD: SOLUCIONES MULTIPLES A UN PROBLEMA COMPLEJO\", A REALIZARSE DEL 16 AL 20 DE MAYO DE 2016 EN LA CIUDAD DE TERMAS DE RIO HONDO, PROVINCIA DE SANTIAGO DEL ESTERO.", "expediente": "2853-D-2016", "id_proyecto": "186144", "expediente_url": "/proyectos/proyecto.jsp?id=186144"}, {"id": "nabdaladem", "fecha": "19/05/2016", "tipo": "LEY", "sumario": "PENSION NO CONTRIBUTIVA PARA HIJAS E HIJOS DE MADRES O PADRES FALLECIDOS EN HECHOS DE VIOLENCIA DOMESTICA. INSTITUCION.", "expediente": "2852-D-2016", "id_proyecto": "186164", "expediente_url": "/proyectos/proyecto.jsp?id=186164"}, {"id": "nabdaladem", "fecha": "19/05/2016", "tipo": "LEY", "sumario": "\"ANTIGUO CAMINO REAL\" QUE ATRAVIESA LAS PROVINCIAS DE SANTA FE, CORDOBA, SANTIAGO DEL ESTERO, TUCUMAN, SALTA Y JUJUY. SE LO DECLARA ITINERARIO CULTURAL NACIONAL. ", "expediente": "2851-D-2016", "id_proyecto": "186163", "expediente_url": "/proyectos/proyecto.jsp?id=186163"}, ...]</pre>
+			</section>
+			<section id="proyecto">
+				<h2 class="page-header">Proyecto</h2>
+				<pre></pre>
+			</section>
+			<section id="comisiones-diputado">
+				<h2 class="page-header">Comisiones por Diputado</h2>
+				<pre>{"comisiones": [{"comision": "DISCAPACIDAD", "cargo": "vicepresidente 2\u00aa"}, {"comision": "ASUNTOS MUNICIPALES", "cargo": "vocal"}, {"comision": "EDUCACION", "cargo": "vocal"}], "id": "nabdaladem"}</pre>
+			</section>
+			<section id="asistencias">
+				<h2 class="page-header">Asistencias</h2>
+				<pre>[{"presente": 7, "mo": 0, "ausente": 0, "nombre": "ABDALA DE MATARAZZO, NORMA AMANDA", "bloque": "FRENTE CIVICO POR SANTIAGO", "id": "nabdaladem", "licencia": 1}, {"presente": 8, "mo": 0, "ausente": 0, "nombre": "ABRAHAM, ALEJANDRO", "bloque": "FRENTE PARA LA VICTORIA - PJ", "id": "aabraham", "licencia": 0}, {"presente": 8, "mo": 0, "ausente": 0, "nombre": "ACERENZA, SAMANTA MARIA CELESTE", "bloque": "UNION PRO", "id": "sacerenza", "licencia": 0}, {"presente": 7, "mo": 0, "ausente": 0, "nombre": "ALBORNOZ, GABRIELA ROMINA", "bloque": "UNION CIVICA RADICAL", "id": "galbornoz", "licencia": 0}, {"presente": 8, "mo": 0, "ausente": 0, "nombre": "ALEGRE, GILBERTO OSCAR", "bloque": "FEDERAL UNIDOS POR UNA NUEVA ARGENTINA", "id": "galegre", "licencia": 0}, {"presente": 8, "mo": 0, "ausente": 0, "nombre": "ALFONSIN, RICARDO LUIS", "bloque": "UNION CIVICA RADICAL", "id": "ralfonsin", "licencia": 0}, {"presente": 7, "mo": 0, "ausente": 0, "nombre": "ALONSO, HORACIO FERNANDO", "bloque": "FEDERAL UNIDOS POR UNA NUEVA ARGENTINA", "id": "halonso", "licencia": 0}, {"presente": 7, "mo": 1, "ausente": 0, "nombre": "ALVAREZ RODRIGUEZ, MARIA CRISTINA", "bloque": "FRENTE PARA LA VICTORIA - PJ", "id": "malvarezr", "licencia": 0}, {"presente": 8, "mo": 0, "ausente": 0, "nombre": "AMADEO, EDUARDO PABLO", "bloque": "UNION PRO", "id": "eamadeo", "licencia": 0}, {"presente": 7, "mo": 0, "ausente": 1, "nombre": "ARENAS, BERTA HORTENSIA", "bloque": "COMPROMISO FEDERAL", "id": "barenas", "licencia": 0}, {"presente": 8, "mo": 0, "ausente": 0, "nombre": "ARGUMEDO, ALCIRA SUSANA", "bloque": "PROYECTO SUR", "id": "aargumedo", "licencia": 0}, {"presente": 5, "mo": 0, "ausente": 1, "nombre": "ARRIETA, GUSTAVO HECTOR", "bloque": "FRENTE PARA LA VICTORIA - PJ", "id": "garrieta", "licencia": 0}, {"presente": 3, "mo": 0, "ausente": 0, "nombre": "AUSTIN, BRENDA LIS", "bloque": "UNION CIVICA RADICAL", "id": "baustin", "licencia": 0}, {"presente": 8, "mo": 0, "ausente": 0, "nombre": "BALBO, ELVA SUSANA", "bloque": "UNION PRO", "id": "ebalbo", "licencia": 0}, {"presente": 8, "mo": 0, "ausente": 0, "nombre": "BALDASSI, HECTOR", "bloque": "UNION PRO", "id": "hbaldassi", "licencia": 0}, {"presente": 8, "mo": 0, "ausente": 0, "nombre": "BANFI, KARINA", "bloque": "UNION CIVICA RADICAL", "id": "kbanfi", "licencia": 0}, {"presente": 8, "mo": 0, "ausente": 0, "nombre": "BARDEGGIA, LUIS MARIA", "bloque": "FRENTE PARA LA VICTORIA - PJ", "id": "lbardeggia", "licencia": 0}, {"presente": 8, "mo": 0, "ausente": 0, "nombre": "BARLETTA, MARIO DOMINGO", "bloque": "UNION CIVICA RADICAL", "id": "mbarletta", "licencia": 0}, {"presente": 8, "mo": 0, "ausente": 0, "nombre": "BARRETO, JORGE RUBEN", "bloque": "FRENTE PARA LA VICTORIA - PJ", "id": "jbarreto", "licencia": 0}, {"presente": 8, "mo": 0, "ausente": 0, "nombre": "BASTERRA, LUIS EUGENIO", "bloque": "FRENTE PARA LA VICTORIA - PJ", "id": "lbasterra", "licencia": 0}, {"presente": 8, "mo": 0, "ausente": 0, "nombre": "BAZZE, MIGUEL ANGEL", "bloque": "UNION CIVICA RADICAL", "id": "mbazze", "licencia": 0}, {"presente": 6, "mo": 0, "ausente": 1, "nombre": "BERMEJO, SIXTO OSVALDO", "bloque": "TRABAJO Y DIGNIDAD", "id": "sbermejo", "licencia": 0}, ...]</pre>
 			</section>
 		</div>
 	</div>
 
 	<link href="{% static "bootstrap/js/bootstrap.min.js" %}" rel="stylesheet" />
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 </body>
 </html>

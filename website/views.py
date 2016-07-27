@@ -227,7 +227,7 @@ def AsistenciasApi(request):
 		else:
 			nuevo_nombre = nombre[:nombre.find(' ',nombre.find(', ')+2)].upper()
 
-		print 'DP: '+nuevo_nombre
+		#print 'DP: '+nuevo_nombre
 
 		asistencia = Asistencias.objects.filter(nombre_match=nuevo_nombre, bloque=bloque)
 		if asistencia:
@@ -236,7 +236,7 @@ def AsistenciasApi(request):
 				ausente = obj.ausente
 				licencia = obj.licencia
 				mo = obj.mo
-				print 'AS: '+obj.nombre_match
+				#print 'AS: '+obj.nombre_match
 		else:
 			presente = None
 			ausente = None
