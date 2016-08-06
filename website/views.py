@@ -128,40 +128,45 @@ def DiputadoProyectosApi(request, id):
 
 def ProyectoApi(request, id):
 
-	def getProyectoAjax(url):
-		html = requests.get(url)
-		soup = BeautifulSoup(html.text, 'html5lib')
-		data = soup.findAll('div')
-		text = ''
-		for e in data:
-			text += e.get_text()
-		return text
+	# def getProyectoAjax(url):
+	# 	html = requests.get(url)
+	# 	soup = BeautifulSoup(html.text, 'html5lib')
+	# 	data = soup.findAll('div')
+	# 	text = ''
+	# 	for e in data:
+	# 		text += e.get_text()
+	# 	return text
 
 	html = requests.get('http://www.diputados.gov.ar/proyectos/proyecto.jsp?id='+id)
 	soup = BeautifulSoup(html.text, 'html5lib')
 
-	ajax = soup.find('div', {'id':'tabs'}).findAll('a')[:2]
-	for link in ajax:
-		if link.get_text() == 'Texto completo':
-			texto = getProyectoAjax('http://www.diputados.gov.ar/'+link.attrs['href'])
-		elif link.get_text() == 'Fundamentos':
-			fundamentos = getProyectoAjax('http://www.diputados.gov.ar/'+link.attrs['href'])
+	content = soup.find('div', {'id':'proyecto-tab'}).find('div',{'class':'tab-content'})
+	texto = content.find('div',{'id':'texto'}).get_text()
 
-	firmantes = []
-	data_firmantes = soup.find('div', {'id':'tabs-3'}).find('table').findAll('tr')
-	for firmante in data_firmantes[1:]:
-		datos = firmante.findAll('td')
-		nombre = datos[0].get_text()
-		distrito = datos[1].get_text()
-		bloque = datos[2].get_text()
-		firmantes.append({'firmante':nombre,'distrito':distrito,'bloque':bloque})
+	fundamentos = content.find('div',{'id':'fundamentos'}).get_text()
+	print fundamentos
+	# ajax = soup.find('div', {'id':'proyecto-tab'}).findAll('a')[:2]
+	# for link in ajax:
+	# 	if link.get_text() == 'Texto completo':
+	# 		texto = getProyectoAjax('http://www.diputados.gov.ar/'+link.attrs['href'])
+	# 	elif link.get_text() == 'Fundamentos':
+	# 		fundamentos = getProyectoAjax('http://www.diputados.gov.ar/'+link.attrs['href'])
 
-	comision = []
-	data_tramite = soup.find('div', {'id':'tabs-4'}).find('table')
-	titulo_tramite = data_tramite.caption.get_text().strip()
-	for t in data_tramite.findAll('tr')[1:]:
-		datos = t.findAll('td')
-		comision.append(datos[0].get_text())
+	# firmantes = []
+	# data_firmantes = soup.find('div', {'id':'tabs-3'}).find('table').findAll('tr')
+	# for firmante in data_firmantes[1:]:
+	# 	datos = firmante.findAll('td')
+	# 	nombre = datos[0].get_text()
+	# 	distrito = datos[1].get_text()
+	# 	bloque = datos[2].get_text()
+	# 	firmantes.append({'firmante':nombre,'distrito':distrito,'bloque':bloque})
+
+	# comision = []
+	# data_tramite = soup.find('div', {'id':'tabs-4'}).find('table')
+	# titulo_tramite = data_tramite.caption.get_text().strip()
+	# for t in data_tramite.findAll('tr')[1:]:
+	# 	datos = t.findAll('td')
+	# 	comision.append(datos[0].get_text())
 
 	proyecto = {'texto':texto,'fundamentos':fundamentos,'firmantes':firmantes,'tramite':{'titulo':titulo_tramite,'comisiones':comision}}
 
