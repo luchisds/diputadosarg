@@ -152,7 +152,7 @@ def ProyectoApi(request, id):
 		datos = t.findAll('td')
 		comision.append(datos[0].get_text())
 
-	proyecto = {'texto':texto,'fundamentos':fundamentos,'firmantes':firmantes,'tramite':{'titulo':titulo_tramite,'comisiones':comision}}
+	proyecto = {'id':id,'texto':texto,'fundamentos':fundamentos,'firmantes':firmantes,'tramite':{'titulo':titulo_tramite,'comisiones':comision}}
 
 	return JsonResponse(proyecto, safe=False)
 
