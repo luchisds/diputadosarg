@@ -22,12 +22,12 @@ urlpatterns = [
     url(r'^$', views.Index, name='index'),
 
     #API
-    url(r'^main/$', views.MainApi, name='main'),#########################################################################
-    url(r'^diputado/$', views.DiputadosApi, name='diputados'),###########################################################
-    url(r'^diputado/(?P<id>[a-z]+)/$', views.DiputadoApi, name='diputado'),##############################################
-    url(r'^diputado/(?P<id>[a-z]+)/proyectos/$', views.DiputadoProyectosApi, name='proyectos'),##########################
+    url(r'^main/$', views.MainApi, name='main'),
+    url(r'^diputado/$', views.DiputadosApi, name='diputados'),
+    url(r'^diputado/(?P<id>[a-z]+)/$', views.DiputadoApi, name='diputado'),
+    url(r'^diputado/(?P<id>[a-z]+)/proyectos/$', views.DiputadoProyectosApi, name='proyectos'),
     url(r'^proyecto/(?P<id>[0-9]+)/$', views.ProyectoApi, name='proyecto'),
-    url(r'^diputado/(?P<id>[a-z]+)/comisiones/$', views.DiputadoComisionesApi, name='comisiones'),#######################
-    url(r'^asistencias/$', views.AsistenciasApi, name='asistencias'),####################################################
+    url(r'^diputado/(?P<id>[a-z]+)/comisiones/$', views.DiputadoComisionesApi, name='comisiones'),
+    url(r'^asistencias/$', views.AsistenciasApi, name='asistencias'),
     url(r'^run/$', views.AsistenciasUpdate, name='run'),
 ]
