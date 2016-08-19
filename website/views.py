@@ -128,27 +128,16 @@ def DiputadoProyectosApi(request, id):
 
 def ProyectoApi(request, id):
 
-	def getProyectoAjax(url):
-		html = requests.get(url)
-		soup = BeautifulSoup(html.text, 'html5lib')
-		data = soup.findAll('div')
-		text = ''
-		for e in data:
-			text += e.get_text()
-		return text
-
 	html = requests.get('http://www.diputados.gov.ar/proyectos/proyecto.jsp?id='+id)
 	soup = BeautifulSoup(html.text, 'html5lib')
+	content = soup.find('div', {'id':'proyecto-tab'}).find('div',{'class':'tab-content'})
 
-	ajax = soup.find('div', {'id':'tabs'}).findAll('a')[:2]
-	for link in ajax:
-		if link.get_text() == 'Texto completo':
-			texto = getProyectoAjax('http://www.diputados.gov.ar/'+link.attrs['href'])
-		elif link.get_text() == 'Fundamentos':
-			fundamentos = getProyectoAjax('http://www.diputados.gov.ar/'+link.attrs['href'])
+	texto = content.find('div',{'id':'texto'}).get_text()
 
+	fundamentos = unidecode(content.find('div',{'id':'fundamentos'}).get_text())
+
+	data_firmantes = content.find('div',{'id':'firmantes'}).find('table').findAll('tr')
 	firmantes = []
-	data_firmantes = soup.find('div', {'id':'tabs-3'}).find('table').findAll('tr')
 	for firmante in data_firmantes[1:]:
 		datos = firmante.findAll('td')
 		nombre = datos[0].get_text()
@@ -157,13 +146,13 @@ def ProyectoApi(request, id):
 		firmantes.append({'firmante':nombre,'distrito':distrito,'bloque':bloque})
 
 	comision = []
-	data_tramite = soup.find('div', {'id':'tabs-4'}).find('table')
+	data_tramite = soup.find('div', {'id':'tramites'}).find('table')
 	titulo_tramite = data_tramite.caption.get_text().strip()
 	for t in data_tramite.findAll('tr')[1:]:
 		datos = t.findAll('td')
 		comision.append(datos[0].get_text())
 
-	proyecto = {'texto':texto,'fundamentos':fundamentos,'firmantes':firmantes,'tramite':{'titulo':titulo_tramite,'comisiones':comision}}
+	proyecto = {'id':id,'texto':texto,'fundamentos':fundamentos,'firmantes':firmantes,'tramite':{'titulo':titulo_tramite,'comisiones':comision}}
 
 	return JsonResponse(proyecto, safe=False)
 
@@ -227,7 +216,7 @@ def AsistenciasApi(request):
 		else:
 			nuevo_nombre = nombre[:nombre.find(' ',nombre.find(', ')+2)].upper()
 
-		print 'DP: '+nuevo_nombre
+		#print 'DP: '+nuevo_nombre
 
 		asistencia = Asistencias.objects.filter(nombre_match=nuevo_nombre, bloque=bloque)
 		if asistencia:
@@ -236,7 +225,7 @@ def AsistenciasApi(request):
 				ausente = obj.ausente
 				licencia = obj.licencia
 				mo = obj.mo
-				print 'AS: '+obj.nombre_match
+				#print 'AS: '+obj.nombre_match
 		else:
 			presente = None
 			ausente = None
@@ -307,10 +296,4 @@ def AsistenciasUpdate(request):
 ##########################
 
 def Index(request):
-	response = requests.get('http://127.0.0.1:8000/main/')
-	datos = response.json()
-
-	response = requests.get('http://127.0.0.1:8000/diputado')
-	diputado = response.json()
-
-	return render(request, 'index.html', {'datos':datos, 'diputados':diputado})
+	return render(request, 'index.html')
