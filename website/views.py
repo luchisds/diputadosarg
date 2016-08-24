@@ -20,12 +20,12 @@ app_path = os.path.dirname(os.path.realpath(__file__))
 
 def MainApi(request):
 	#Cantidad de sesiones
-	cantidad_sesiones = 8
+	cantidad_sesiones = 10
 	periodo = 134
-	slug_sesiones = 'Se realizaron 7 Sesiones que comprenden 7 reuniones (incluye 1 Sesión Informativa) + 1 Asamblea Legislativa. TOTAL: 8 REUNIONES'
+	slug_sesiones = 'Se realizaron 9 Sesiones que comprenden 9 reuniones (incluye 1 Sesión Informativa) + 1 Asamblea Legislativa. TOTAL: 10'
 
 	sesiones = list()
-	with open(app_path+'/static/tabula-PRESENTISMO_2016_0716.csv', 'rb') as f:
+	with open(app_path+'/static/tabula-PRESENTISMO_2016_0816.csv', 'rb') as f:
 		reader = csv.reader(f)
 		reader.next()
 		for row in reader:
@@ -249,7 +249,7 @@ def AsistenciasUpdate(request):
 
 	asistencias = []
 
-	with open(app_path+'/static/tabula-ESTADISTICAS_2016_0716.csv', 'rb') as f:
+	with open(app_path+'/static/tabula-ESTADISTICAS_2016_0816.csv', 'rb') as f:
 		reader = csv.reader(f)
 		#Pasa al segundo registro porque el primero contiene los nombres de columnas
 		reader.next()
