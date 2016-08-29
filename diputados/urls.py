@@ -20,6 +20,7 @@ from website import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.Index, name='index'),
+    url(r'^demo/$', views.Demo, name='demo'),
 
     #API
     url(r'^main/$', views.MainApi, name='main'),

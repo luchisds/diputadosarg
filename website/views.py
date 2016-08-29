@@ -297,3 +297,34 @@ def AsistenciasUpdate(request):
 
 def Index(request):
 	return render(request, 'index.html')
+
+def Demo(request):
+	#asistencias
+    response = requests.get('https://diputadosarg.herokuapp.com/asistencias/')
+    data_asistencias = json.loads(response.text)
+    #diputados
+    response = requests.get('https://diputadosarg.herokuapp.com/diputado/')
+    data_diputados = json.loads(response.text)
+
+    diputados = {}
+    for diputado in data_diputados:
+        diputados[diputado['id']] = diputado['distrito']
+
+    estadistica = {}
+    for diputado in data_asistencias:
+        if estadistica.get(diputado['bloque']) == None:
+            estadistica[diputado['bloque']] = {}
+            estadistica[diputado['bloque']]['presente'] = diputado['presente']
+            estadistica[diputado['bloque']]['ausente'] = diputado['ausente']
+            estadistica[diputado['bloque']]['licencia'] = diputado['licencia']
+            estadistica[diputado['bloque']]['mo'] = diputado['mo']
+            estadistica[diputado['bloque']]['distrito'] = diputados[diputado['id']]
+            estadistica[diputado['bloque']]['bancas'] = 1
+        else:
+            estadistica[diputado['bloque']]['presente'] = estadistica.get(diputado['bloque']).get('presente', 0) + diputado['presente']
+            estadistica[diputado['bloque']]['ausente'] = estadistica.get(diputado['bloque']).get('ausente', 0) + diputado['ausente']
+            estadistica[diputado['bloque']]['licencia'] = estadistica.get(diputado['bloque']).get('licencia', 0) + diputado['licencia']
+            estadistica[diputado['bloque']]['mo'] = estadistica.get(diputado['bloque']).get('mo', 0) + diputado['mo']
+            estadistica[diputado['bloque']]['bancas'] = estadistica.get(diputado['bloque']).get('bancas', 0) + 1
+
+	return render(request, 'demo.html', {'estadistica':estadistica})
