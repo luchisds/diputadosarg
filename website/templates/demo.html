@@ -59,9 +59,32 @@
 			<p class="lead">Este es un proyecto open-source que pone a disposicion de cualquier desarrollador un API REST con información del sitio <a href="http://www.diputados.gov.ar">www.diputados.gov.ar</a> para su libre uso.</p>
 		</header>
 
-		<div>
-			{{estadistica}}
-		</div>
+		<p>{{data_gral.cantidad_sesiones}}</p>
+
+		<table>
+			<tr>
+				<th>BLOQUE</th>
+				<th>DISTRITO</th> 
+				<th>BANCAS</th>
+				<th>PRESENTE</th>
+				<th>AUSENTE</th>
+				<th>LICENCIA</th>
+				<th>MO</th>
+				<th>% PRESENCIA</th>
+			</tr>
+			{% for key, val in estadistica.items %}
+			<tr>
+				<td>{{key}}</td>
+				<td>{{val.distrito}}</td> 
+				<td>{{val.bancas}}</td>
+				<td>{{val.presente}}</td>
+				<td>{{val.ausente}}</td>
+				<td>{{val.licencia}}</td>
+				<td>{{val.mo}}</td>
+				<td></td>
+			</tr>
+			{% endfor %}
+		</table>
 
 		<!-- <p>Los datos disponibles en HTML se obtienen realizando scrapping del sitio <a href="http://www.diputados.gov.ar">www.diputados.gov.ar</a>.</p>
 		<p>Los datos disponibles en formato PDF se extraen a archivos <i>.csv</i> con ayuda de la herramienta de código libre <a href="http://tabula.technology/"><em>TABULA</em></a>.</p>

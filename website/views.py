@@ -305,6 +305,9 @@ def Demo(request):
     #diputados
     response = requests.get('https://diputadosarg.herokuapp.com/diputado/')
     data_diputados = json.loads(response.text)
+    #gral
+    response = requests.get('https://diputadosarg.herokuapp.com/main/')
+    data_gral = json.loads(response.text)
 
     diputados = {}
     for diputado in data_diputados:
@@ -327,4 +330,4 @@ def Demo(request):
             estadistica[diputado['bloque']]['mo'] = estadistica.get(diputado['bloque']).get('mo', 0) + diputado['mo']
             estadistica[diputado['bloque']]['bancas'] = estadistica.get(diputado['bloque']).get('bancas', 0) + 1
 
-	return render(request, 'demo.html', {'estadistica':estadistica})
+    return render(request, 'demo.html', {'estadistica':estadistica, 'data_gral':data_gral})
