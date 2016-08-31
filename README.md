@@ -1,13 +1,11 @@
-# DIPUTADOSARG
+# DiputadosArg
 
-Este es un proyecto open-source que busca crear y mantener actualizada un API REST con la información dispionible en el sitio www.diputados.gov.ar en cuanto a la planta actual de diputados nacionales, sus proyectos y presentismo.
+Este es un proyecto open-source que pone a disposicion de cualquier desarrollador un API REST con información del sitio www.diputados.gov.ar para su libre uso.
 
-La idea es agregar a futuro las votaciones por diputado.
+Los datos disponibles en HTML se obtienen realizando scrapping del sitio www.diputados.gov.ar.
+Los datos disponibles en formato PDF se extraen a archivos .csv con ayuda de la herramienta de código libre TABULA (https://github.com/tabulapdf/tabula).
 
+Documentacion del API disponible en https://diputadosarg.herokuapp.com/
 
-
-Mucha de la informacion relevante en el sitio www.diputados.gov.ar se encuentra en formato PDF que dificulta el acceso a los datos sin antes extraer los datos de cada uno de estos archivos. Para estos casos utilizo la herramienta TABULA (https://github.com/tabulapdf/tabula)
-
-Los datos disponibles en las paginas HTML se obtienen mediante tecnicas de scrapping de datos.
-
-Utilizo el lenguaje PYTHON y el framework Django.
+Por @luciano_sds
+http://www.luciano.im
