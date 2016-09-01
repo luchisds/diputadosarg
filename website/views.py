@@ -303,15 +303,17 @@ def Demo(request):
     response = requests.get('https://diputadosarg.herokuapp.com/asistencias/')
     data_asistencias = json.loads(response.text)
     #diputados
-    response = requests.get('https://diputadosarg.herokuapp.com/diputado/')
-    data_diputados = json.loads(response.text)
+    # response = requests.get('https://diputadosarg.herokuapp.com/diputado/')
+    # data_diputados = json.loads(response.text)
     #gral
     response = requests.get('https://diputadosarg.herokuapp.com/main/')
     data_gral = json.loads(response.text)
 
-    diputados = {}
-    for diputado in data_diputados:
-        diputados[diputado['id']] = diputado['distrito']
+    # diputados = {}
+    # for diputado in data_diputados:
+    #     diputados[diputado['id']] = diputado['distrito']
+
+    sesiones = data_gral['cantidad_sesiones']
 
     estadistica = {}
     for diputado in data_asistencias:
@@ -321,7 +323,7 @@ def Demo(request):
             estadistica[diputado['bloque']]['ausente'] = diputado['ausente']
             estadistica[diputado['bloque']]['licencia'] = diputado['licencia']
             estadistica[diputado['bloque']]['mo'] = diputado['mo']
-            estadistica[diputado['bloque']]['distrito'] = diputados[diputado['id']]
+            # estadistica[diputado['bloque']]['distrito'] = diputados[diputado['id']]
             estadistica[diputado['bloque']]['bancas'] = 1
         else:
             estadistica[diputado['bloque']]['presente'] = estadistica.get(diputado['bloque']).get('presente', 0) + diputado['presente']
@@ -329,5 +331,10 @@ def Demo(request):
             estadistica[diputado['bloque']]['licencia'] = estadistica.get(diputado['bloque']).get('licencia', 0) + diputado['licencia']
             estadistica[diputado['bloque']]['mo'] = estadistica.get(diputado['bloque']).get('mo', 0) + diputado['mo']
             estadistica[diputado['bloque']]['bancas'] = estadistica.get(diputado['bloque']).get('bancas', 0) + 1
+
+    for bloque, values in estadistica.iteritems():
+    	estadistica[bloque]['presentismo'] = round(float(values['presente']) / float(values['bancas']) * float(sesiones), 2)
+        # print round(float(values['presente']) / float(values['bancas']) * float(sesiones), 2)
+        # print "-------------"
 
     return render(request, 'demo.html', {'estadistica':estadistica, 'data_gral':data_gral})

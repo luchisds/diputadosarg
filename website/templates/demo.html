@@ -59,12 +59,35 @@
 			<p class="lead">Este es un proyecto open-source que pone a disposicion de cualquier desarrollador un API REST con información del sitio <a href="http://www.diputados.gov.ar">www.diputados.gov.ar</a> para su libre uso.</p>
 		</header>
 
-		<p>{{data_gral.cantidad_sesiones}}</p>
+		<p>Periodo: {{data_gral.periodo}}</p>
+		<p>{{data_gral.slug_sesiones}}</p>
+		
+		
+		<table class="table">
+			<tr>
+				<th>FECHA</th>
+				<th>SESION</th>
+				<th>PRESENTE</th>
+				<th>AUSENTE</th>
+				<th>LICENCIA</th>
+				<th>MO</th>
+			</tr>
+			{% for k, v in data_gral.sesiones.items %}
+			<tr>
+				<td>{{v.fecha}}</td>
+				<td>{{v.sesion}}</td>
+				<td>{{v.presente}}</td>
+				<td>{{v.ausente}}</td>
+				<td>{{v.licencia}}</td>
+				<td>{{v.mo}}</td>
+			</tr>
+			{% endfor %}
+		</table>
 
-		<table>
+		<table class="table">
 			<tr>
 				<th>BLOQUE</th>
-				<th>DISTRITO</th> 
+				<!-- <th>DISTRITO</th>  -->
 				<th>BANCAS</th>
 				<th>PRESENTE</th>
 				<th>AUSENTE</th>
@@ -75,13 +98,13 @@
 			{% for key, val in estadistica.items %}
 			<tr>
 				<td>{{key}}</td>
-				<td>{{val.distrito}}</td> 
+				<!-- <td>{{val.distrito}}</td>  -->
 				<td>{{val.bancas}}</td>
 				<td>{{val.presente}}</td>
 				<td>{{val.ausente}}</td>
 				<td>{{val.licencia}}</td>
 				<td>{{val.mo}}</td>
-				<td></td>
+				<td>{{val.presentismo}}</td>
 			</tr>
 			{% endfor %}
 		</table>

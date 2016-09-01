@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from models import Asistencias
+#from models import Asistencias
 
-admin.site.register(Asistencias)
+#admin.site.register(Asistencias)
