@@ -26,7 +26,8 @@ with open(BASE_DIR+'/diputados/secret_key.txt') as f:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*',]
+#El host sin subdominio quiere decir que acepta cualquier subdominio
+ALLOWED_HOSTS = ['diputadosarg.herokuapp.com','127.0.0.1', 'localhost',]
 
 
 # Application definition

@@ -14,12 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf import settings
-from django.conf.urls.static import static
 from django.conf.urls import url
 from django.contrib import admin
 from website import views
 
 urlpatterns = [
+    #static.serve debe ser usado solo en dev environment Fuck!
+    url(r'^static/(?P<path>.*)$','django.views.static.serve',{'document_root': settings.STATIC_ROOT}),
     #url(r'^admin/', admin.site.urls),
     url(r'^$', views.Index, name='index'),
     url(r'^presentismo/$', views.Presentismo, name='presentismo'),
@@ -33,4 +34,4 @@ urlpatterns = [
     url(r'^diputado/(?P<id>[a-z]+)/comisiones/$', views.DiputadoComisionesApi, name='comisiones'),
     url(r'^asistencias/$', views.AsistenciasApi, name='asistencias'),
     url(r'^run/$', views.AsistenciasUpdate, name='run'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
